@@ -1,0 +1,75 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{report_print}
+
+\AtBeginDocument{%
+	\maketitle%
+	\ErrorsOn{}%
+}
+\AtEndDocument{%
+	\ErrorsOff{}%
+}
+% \def\clefttext{}
+% \def\crightext{}
+
+\RequirePackage{fancyhdr}
+\pagestyle{fancyplain}
+\fancyhf{}
+\fancyhead[RE]{\bfseries\rightmark}
+\fancyhead[LO]{\bfseries\leftmark}
+
+\def\fancythepage{\bfseries\thepage}
+
+\fancyfoot[LO,RE]{\fancythepage}
+% \fancyfoot[RO]{\crightext}
+% \fancyfoot[LE]{\clefttext}
+
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyfoot[LO,RE]{\fancythepage}
+	% \fancyfoot[RO]{\crightext}
+	% \fancyfoot[LE]{\clefttext}
+}
+
+\RequirePackage{ifpdf}
+\renewcommand\cleardoublepage{
+	\clearpage
+	\ifodd\value{page}
+		\clearpage
+	\else
+		\newgeometry{paperheight=22pt,margin=1mm}%
+		\pdfpageheight=22pt%
+		\onecolumn%
+		\thispagestyle{empty}%
+		\begin{center}%
+			It's like a blank page. Only it isn't.%
+		\end{center}%
+		\clearpage
+		\restoreheight
+		\restoregeometry
+	\fi
+}
+
+\newcommand\pref[1]{\ref{#1} on page \pageref{#1}}
+
+\setcounter{tocdepth}{1}
+
+
+\newcommand\halfwidth{0.45\textwidth}
+\newcommand\thirdwidth{0.3\textwidth}
+
+\RequirePackage{qrcode}
+\qrset{height=13mm}
+
+\renewcommand*\url[1]{%
+	\marginpar[%
+		\hspace*{1mm}%
+			{\qrcode{#1}}%
+	]{%
+			{\qrcode{#1}}%
+		\hspace*{1mm}%
+	}%
+	{\footnotesize \noqrurl{#1}}%
+}
+
+\RequirePackage[perpage]{footmisc}
+\endinput

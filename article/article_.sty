@@ -1,0 +1,45 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{article_}
+
+\RequirePackage[immediate,debrief]{silence}
+\ErrorFilter{latex}{Missing}
+
+\ifprint
+	\RequirePackage{article_print}
+\fi
+\author{Zane Hannan}
+\RequirePackage{graphicx}
+
+
+\AtEndDocument{%
+	\ifdefined\LogoEnd
+		\ifprint
+			\onecolumn%
+			\clearpage%
+			\smallerpage%
+			\ifodd\value{page}%
+				~%
+				\clearpage%
+			\fi%
+			\ifnum\intcalcMod{\value{page}}{4}=0
+			\else
+				\ifnum\intcalcMod{\value{page}}{4}>1
+					~\clearpage
+					\ifnum\intcalcMod{\value{page}}{4}>1
+						~\clearpage
+						\ifnum\intcalcMod{\value{page}}{4}>1
+							~\clearpage
+						\fi
+					\fi
+				\fi
+			\fi
+		\fi
+		\largerpage
+		\pagenumbering{gobble}%
+		\vspace*{\fill}
+		\centering%
+		\LogoEnd
+		\vspace*{\fill}
+	\fi
+}
+\endinput

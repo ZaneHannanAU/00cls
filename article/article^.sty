@@ -1,0 +1,36 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{article^}
+
+\newif\ifscreen
+\screenfalse
+\newif\ifprint
+\printfalse
+\newif\ifmobile
+\mobilefalse
+
+
+\RequirePackage[australian]{babel}
+
+\author{Zane Hannan}
+\date{Last edited on \today}
+
+\RequirePackage{
+	geometry,
+	microtype,
+	textcomp,
+	hyperref,
+	xspace,
+	intcalc,
+}
+
+\hypersetup{%
+	colorlinks,%
+	pdffitwindow=true,%
+	pdfdisplaydoctitle,%
+	bookmarksnumbered,%
+	linktoc=all,%
+}
+\newcommand\TikZ{Ti{\em k}Z\xspace}
+\let\noqrurl\url
+
+\endinput

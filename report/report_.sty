@@ -1,0 +1,84 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{report_}
+
+\RequirePackage[immediate,debrief]{silence}
+\ErrorFilter{latex}{Missing}
+
+\ifprint
+	\RequirePackage{report_print}
+\fi
+
+\author{Zane Hannan}
+
+% Old stuff
+
+\makeatletter
+\renewcommand\tableofcontents{%
+	\onecolumn%
+	\section*{\contentsname}\addcontentsline{toc}{chapter}{\contentsname}%
+
+	\@mkboth{\MakeUppercase\contentsname}%
+		{\MakeUppercase\contentsname}%
+	\@starttoc{toc}%
+}
+\renewcommand\listoftables{%
+	\onecolumn%
+	\chapter{\listtablename}%
+
+	\@mkboth{\MakeUppercase\listtablename}%
+		{\MakeUppercase\listtablename}%
+	\@starttoc{lot}%
+}
+\renewcommand\listoffigures{%
+	\onecolumn%
+	\chapter{\listfigurename}%
+
+	\@mkboth{\MakeUppercase\listfigurename}%
+		{\MakeUppercase\listfigurename}%
+	\@starttoc{lof}%
+}
+
+% Frontmatter, Mainmatter and Backmatter
+\newcommand\frontmatter{%
+	\if@titlepage
+	\else
+		\cleardoublepage
+	\fi
+	%\@mainmatterfalse
+	\pagenumbering{roman}
+}
+
+\newcommand\mainmatter{%
+	\cleardoublepage
+	% \@mainmattertrue
+	\pagenumbering{arabic}
+}
+
+\newcommand\backmatter{%
+	\appendix
+	\cleardoublepage
+	% \@mainmatterfalse
+	\pagenumbering{alph}
+	\phantomsection\addcontentsline{toc}{part}{Appendicies}
+}
+
+% non-toc
+\newcommand\listofall{%
+	\listoftables%
+	\listoffigures%
+}
+\makeatother
+
+% Graphics
+\RequirePackage{graphicx}
+
+% Logos
+\def\TED{{\bfseries\sf\textcolor{red}{TED}}\xspace}
+\def\TEDEd{{\bfseries\sf\TED{}Ed}\xspace}
+\def\YouTube{{\sf\textcolor{red}{You}{Tube}}\xspace}
+
+\newcommand\TikZ{Ti{\em k}Z\xspace}
+
+\renewcommand*{\thefootnote}{\fnsymbol{footnote}}
+
+\endinput

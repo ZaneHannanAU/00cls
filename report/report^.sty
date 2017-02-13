@@ -1,0 +1,32 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{report^}
+
+\RequirePackage{
+	xcolor,
+	graphicx,
+	geometry,
+	hyperref,
+	microtype,
+	textcomp,
+	xspace,
+}
+\hypersetup{
+	colorlinks,
+	pdffitwindow=true,
+	pdfdisplaydoctitle,
+	bookmarksnumbered
+}
+\RequirePackage[australian]{babel}
+
+\newif\ifmobile
+\mobilefalse
+\newif\ifscreen
+\screenfalse
+\newif\ifprint
+\printfalse
+
+\let\noqrurl\url
+
+\def\lastedited{Last edited on \today}
+\date{\lastedited}
+\endinput

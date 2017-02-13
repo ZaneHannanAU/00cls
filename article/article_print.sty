@@ -1,0 +1,25 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{article_print}
+
+\AtBeginDocument{%
+	\maketitle%
+	\ErrorsOn{}%
+}
+\AtEndDocument{%
+	\ErrorsOff{}%
+}
+
+\RequirePackage{qrcode}
+\qrset{height=13mm}
+
+\renewcommand*\url[1]{%
+	\marginpar[%
+		\hspace*{-13mm}%
+			{\qrcode{#1}}%
+	]{%
+			{\qrcode{#1}}%
+		\hspace*{-13mm}%
+	}%
+	{\footnotesize \noqrurl{#1}}%
+}
+\endinput

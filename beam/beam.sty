@@ -1,0 +1,73 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beam}
+
+\RequirePackage{hyperref}
+\newif\ifmetro
+\metrofalse
+\newif\ifSzeged
+\Szegedfalse
+\newif\ifbeam
+\beamfalse
+
+\def\extraOptionsTop{}
+\def\ExtraOptions#1{\def\extraOptionsTop{#1}}
+
+\DeclareOption{beam}{
+	\beamtrue
+}
+\DeclareOption{szeged}{
+	\Szegedtrue
+}
+
+\DeclareOption{metro}{
+	\metrotrue
+}
+\ProcessOptions\relax
+
+\ifmetro
+	\usetheme{metropolis}
+	\ifhandout
+		\metroset{
+			progressbar= none,
+			numbering  = counter,
+			background = light,
+		}
+		\usecolortheme{dove}
+	\else
+		\metroset{%
+			progressbar= foot,
+			numbering  = none,
+			background = dark,
+		}%
+		\usecolortheme{owl}
+	\fi
+	\RequirePackage[T1]{fontenc}
+	\RequirePackage[sfdefault]{FiraSans}
+	\RequirePackage{FiraMono}
+	\ExtraOptions{\firalight}
+\fi
+
+\ifSzeged
+	\usetheme{Szeged}
+	\ifhandout
+		\usecolortheme{dove}
+	\else
+		\usecolortheme{owl}
+	\fi
+	\RequirePackage[T1]{fontenc}
+	\RequirePackage[sfdefault]{noto}
+\fi
+
+\ifbeam
+	\RequirePackage{pgfpages}
+	\setbeameroption{show notes on second screen=right}
+\fi
+
+\AtBeginDocument{%
+	\extraOptionsTop%
+	\begin{frame}[plain,noframenumbering]%
+		\titlepage % Sets up the titlepage
+	\end{frame}%
+}
+
+\endinput
