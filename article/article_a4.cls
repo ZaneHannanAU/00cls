@@ -39,8 +39,15 @@
 \newcommand\pref[1]{\ref{#1} on page \pageref{#1}}
 
 \AtBeginDocument{%
-	\maketitle%
-	\ErrorsOn%
+\ifx\LogoStart\undefined
+\else
+	\vfill
+	{\centering\LogoStart}
+	\vfill
+	\eject % page break
+\fi
+\maketitle%
+\ErrorsOn%
 }
 
 \RequirePackage[immediate,debrief]{silence}

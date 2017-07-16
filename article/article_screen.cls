@@ -29,7 +29,14 @@
 \RequirePackage{sfmath}
 
 \AtBeginDocument{%
-	\maketitle%
+	\ifx\LogoStart\undefined
+	\else
+		\vfill
+		{\centering\LogoStart}
+		\vfill
+		\eject % page break
+	\fi
+	\maketitle
 }
 \def\largerpage{\clearpage}
 

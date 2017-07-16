@@ -27,6 +27,7 @@
 
 
 \printtrue
+\Afourtrue
 
 \RequirePackage{report_}
 \endinput

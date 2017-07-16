@@ -30,6 +30,13 @@
 \RequirePackage{sfmath}
 
 \AtBeginDocument{%
+	\ifx\LogoStart\undefined
+	\else
+		\vfill
+		{\centering\LogoStart}
+		\vfill
+		\eject
+	\fi
 	\pdfpageheight=80mm%
 	\maketitle%
 	\eject % page break

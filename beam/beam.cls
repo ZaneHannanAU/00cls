@@ -32,7 +32,11 @@
 % Process given options
 \ProcessOptions\relax
 
-\LoadClassWithOptions{beamer}
+\ifhandout
+	\LoadClass[aspectratio=141,handout]{beamer}
+\else
+	\LoadClassWithOptions{beamer}
+\fi
 
 \RequirePackage{
 	hyperref,

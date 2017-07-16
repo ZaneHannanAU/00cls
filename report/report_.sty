@@ -20,6 +20,7 @@
 	\@mkboth{\MakeUppercase\contentsname}%
 		{\MakeUppercase\contentsname}%
 	\@starttoc{toc}%
+	\ifAfour\twocolumn\fi
 }
 \renewcommand\listoftables{%
 	\onecolumn%
@@ -28,6 +29,7 @@
 	\@mkboth{\MakeUppercase\listtablename}%
 		{\MakeUppercase\listtablename}%
 	\@starttoc{lot}%
+	\ifAfour\twocolumn\fi
 }
 \renewcommand\listoffigures{%
 	\onecolumn%
@@ -36,6 +38,7 @@
 	\@mkboth{\MakeUppercase\listfigurename}%
 		{\MakeUppercase\listfigurename}%
 	\@starttoc{lof}%
+	\ifAfour\twocolumn\fi
 }
 
 % Frontmatter, Mainmatter and Backmatter
@@ -58,7 +61,7 @@
 	\appendix
 	\cleardoublepage
 	% \@mainmatterfalse
-	\pagenumbering{alph}
+	\pagenumbering{Alph}
 	\phantomsection\addcontentsline{toc}{part}{Appendicies}
 }
 

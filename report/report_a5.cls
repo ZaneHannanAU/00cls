@@ -27,6 +27,7 @@
 
 
 \printtrue
+\Afivetrue
 
 \RequirePackage{report_}
 \endinput
